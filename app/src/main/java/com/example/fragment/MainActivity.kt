@@ -9,11 +9,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainerView, firstFragment(), "firstFragment")
-            .commit()
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragmentContainerView3, lastFragment(), "lastFragment")
+        addFragment(firstFragment(), "firstFragment")
+        addFragment(lastFragment(), "lastFragment")
         val btn = findViewById<Button>(R.id.button)
         btn.setOnClickListener {
             replaceFragment(lastFragment(), "lastFragment")
@@ -21,7 +18,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun addFragment(fragment: Fragment, tag: String) {
-
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainerView, fragment, tag)
+            .commit()
     }
 
     fun replaceFragment(fragment: Fragment, tag: String) {
