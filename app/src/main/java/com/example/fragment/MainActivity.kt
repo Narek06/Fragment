@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
         addFragment(lastFragment(), "lastFragment")
         val btn = findViewById<Button>(R.id.button)
         btn.setOnClickListener {
+            replaceFragment(firstFragment(), "firstFragment")
+        }
+        val btn2 = findViewById<Button>(R.id.button2)
+        btn2.setOnClickListener {
             replaceFragment(lastFragment(), "lastFragment")
         }
     }
